@@ -1,1 +1,1 @@
-sudo python /home/pi/MonkeyBot-Pi/Blinky/blinky.py
+sudo python /home/pi/MonkeyBot-Pi/responders/blinky.py
