@@ -23,6 +23,22 @@ module.exports = function(robot) {
     });
   });
 
+  // IP 
+  robot.respond("/what's your ip address/i", function(msg) {
+    console.log(msg);
+    var cmd = "ifconfig wlan0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'";
+    msg.send("hang on, checking...");
+    var exec = require('child_process').exec;
+    exec(cmd, function(error, stdout, stderr) {
+      if (error) {
+        msg.send(error);
+        msg.send(stderr);
+      } else {
+        msg.send(stdout);
+      }
+    });
+  });
+
   // Scary run anything - just for debug
   robot.respond("/run (.*)$/i", function(msg) {
     console.log(msg);
